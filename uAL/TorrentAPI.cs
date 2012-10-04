@@ -202,6 +202,18 @@ namespace uAL
 
                     Console.WriteLine();
                     Console.WriteLine("Added " + fileName + " with label " + label);
+
+                    // now we should rename the torrent file to a .loaded 
+                    try
+                    {
+                        File.Move(fileName, fileName + ".loaded");
+                        Console.WriteLine("{0} was moved to {1}.", fileName, fileName + ".loaded");
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("The process failed moving the torrent {0}: {1}", fileName, e.ToString());
+                    }
+
                     return true;
                 }
             }

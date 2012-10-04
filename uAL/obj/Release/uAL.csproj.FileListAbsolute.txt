@@ -7,3 +7,8 @@ D:\My Dropbox\Misc\uAL\uAL\bin\Release\Jayrock.Json.dll
 D:\My Dropbox\Misc\uAL\uAL\obj\Release\ResolveAssemblyReference.cache
 C:\Documents and Settings\A481001\My Documents\Visual Studio 2010\Projects\uAL\uAL\obj\Release\uAL.exe
 C:\Documents and Settings\A481001\My Documents\Visual Studio 2010\Projects\uAL\uAL\obj\Release\uAL.pdb
+C:\Documents and Settings\A481001\My Documents\Visual Studio 2010\Projects\uAL\uAL\bin\Release\uAL.exe
+C:\Documents and Settings\A481001\My Documents\Visual Studio 2010\Projects\uAL\uAL\bin\Release\uAL.pdb
+C:\Documents and Settings\A481001\My Documents\Visual Studio 2010\Projects\uAL\uAL\bin\Release\Jayrock.dll
+C:\Documents and Settings\A481001\My Documents\Visual Studio 2010\Projects\uAL\uAL\bin\Release\Jayrock.Json.dll
+C:\Documents and Settings\A481001\My Documents\Visual Studio 2010\Projects\uAL\uAL\obj\Release\ResolveAssemblyReference.cache
