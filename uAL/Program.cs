@@ -60,6 +60,7 @@ namespace uAL
                 if (settings.Dir == "")
                     settings.Dir = t.GetDownloadDir();
 
+                Console.WriteLine("Connection successful!");
                 Console.WriteLine("Detecting label folders...");
                 Console.WriteLine("Detected: ");
                 Labels = new List<string>();
@@ -68,9 +69,21 @@ namespace uAL
                 {
                     Console.WriteLine(label.Name);
                     Labels.Add(label.Name);
+                    
+                    // before we create the FileSystemMonitor lets add all the torrent file which have been created
+                    // since the last time we were running (easy now since the added ones are .loaded)
+                    // we only check the Label folders
+                    foreach (FileInfo torrentFile in label.GetFiles("*.torrent"))
+                    {
+                        Console.WriteLine("Adding existing torrent file...");
+                        uAL.Program.t.AddTorrent(torrentFile.FullName, label.Name);
+                    }
+
                 }
+
+                // now we can start the FileSystemMonitor
                 FileSystemMonitor fs = new FileSystemMonitor();
-                Console.WriteLine("Connection successful!");
+                Console.WriteLine("Running!");
             }
             catch (Exception ex)
             {
