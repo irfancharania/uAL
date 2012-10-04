@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uAL", "uAL\uAL.csproj", "{D51AFB67-F321-4120-AE68-C5A4BB21234E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wuAL", "wuAL\wuAL.csproj", "{9A57947E-74F8-43C4-B325-E0F01564EFE0}"
