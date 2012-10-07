@@ -204,14 +204,24 @@ namespace uAL
                     Console.WriteLine("Added " + fileName + " with label " + label);
 
                     // now we should rename the torrent file to a .loaded 
-                    try
+                    bool renamed = false;
+                    int renumber = 2;
+                    string renameExtension = ".loaded";
+                    while (!renamed)
                     {
-                        File.Move(fileName, fileName + ".loaded");
-                        Console.WriteLine("{0} was moved to {1}.", fileName, fileName + ".loaded");
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine("The process failed moving the torrent {0}: {1}", fileName, e.ToString());
+                        try
+                        {
+                            File.Move(fileName, fileName + renameExtension);
+                            Console.WriteLine("Renamed to {0}.", fileName + renameExtension);
+                            renamed = true;
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine("File already exists {0}: {1}", fileName + renameExtension, e.ToString());
+                            renameExtension = "_" + renumber.ToString() + renameExtension;
+                            renumber += 1;
+                            renamed = false;
+                        }
                     }
 
                     return true;
