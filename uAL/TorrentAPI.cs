@@ -217,8 +217,8 @@ namespace uAL
                         }
                         catch (Exception e)
                         {
-                            Console.WriteLine("File already exists {0}: {1}", fileName + renameExtension, e.ToString());
-                            renameExtension = "_" + renumber.ToString() + renameExtension;
+                            Console.WriteLine("File already exists {0} incrementing number...", fileName + renameExtension);
+                            renameExtension = "_" + renumber.ToString() + ".loaded";
                             renumber += 1;
                             renamed = false;
                         }
