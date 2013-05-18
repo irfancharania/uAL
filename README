@@ -3,3 +3,13 @@
 Taken from [this](http://forum.utorrent.com/viewtopic.php?id=100212) post
 
 also this [web API](http://www.utorrent.com/community/developers/webapi)
+
+----------------------
+
+I have an HT-PC running uTorrent and this console app. uTorrent is set to watch a Dropbox folder.
+
+This way I can add any torrent files to Dropbox and they will automatically get loaded into the uTorrent on the HT-PC.
+
+uTorrent has often tried to load files from Dropbox before they have completed syncing, thus crashing this console app. I added a file lock to prevent this.
+
+Also, I don't like having files cluttering up the folder, so I have added an option to delete the *.torrent files after they've been loaded into uTorrent.
