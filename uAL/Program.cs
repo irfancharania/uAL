@@ -49,6 +49,16 @@ namespace uAL
                     Console.Write("Invalid input, only Y or N allowed. Try again: ");
                     settings.StopOnDone = Console.ReadLine();
                 }
+
+                Console.Write("Should delete *.torrent file after torrent has been loaded? (Y/N) ");
+                settings.DeleteFileOnAdd = Console.ReadLine();
+                while (string.Compare(settings.DeleteFileOnAdd, "y", true) != 0 &&
+                        string.Compare(settings.DeleteFileOnAdd, "n", true) != 0)
+                {
+                    Console.Write("Invalid input, only Y or N allowed. Try again: ");
+                    settings.DeleteFileOnAdd = Console.ReadLine();
+                }
+
                 settings.Save();
             }
             Console.Clear();
@@ -104,6 +114,7 @@ namespace uAL
                 settings.Host = "";
                 settings.Dir = "";
                 settings.StopOnDone = "";
+                settings.DeleteFileOnAdd = "";
                 settings.Save();
                 return;
             }
@@ -151,6 +162,14 @@ namespace uAL
         {
             get { return (string)(this["StopOnDone"]); }
             set { this["StopOnDone"] = value; }
+        }
+
+        [UserScopedSetting()]
+        [DefaultSettingValue("")]
+        public string DeleteFileOnAdd
+        {
+            get { return (string)(this["DeleteFileOnAdd"]); }
+            set { this["DeleteFileOnAdd"] = value; }
         }
     }
 }

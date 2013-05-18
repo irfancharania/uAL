@@ -12,3 +12,10 @@ C:\Documents and Settings\A481001\My Documents\Visual Studio 2010\Projects\uAL\u
 C:\Documents and Settings\A481001\My Documents\Visual Studio 2010\Projects\uAL\uAL\bin\Release\Jayrock.dll
 C:\Documents and Settings\A481001\My Documents\Visual Studio 2010\Projects\uAL\uAL\bin\Release\Jayrock.Json.dll
 C:\Documents and Settings\A481001\My Documents\Visual Studio 2010\Projects\uAL\uAL\obj\Release\ResolveAssemblyReference.cache
+D:\My Documents\GitHub\uAL\uAL\bin\Release\uAL.exe
+D:\My Documents\GitHub\uAL\uAL\bin\Release\uAL.pdb
+D:\My Documents\GitHub\uAL\uAL\bin\Release\Jayrock.dll
+D:\My Documents\GitHub\uAL\uAL\bin\Release\Jayrock.Json.dll
+D:\My Documents\GitHub\uAL\uAL\obj\Release\uAL.csprojResolveAssemblyReference.cache
+D:\My Documents\GitHub\uAL\uAL\obj\Release\uAL.exe
+D:\My Documents\GitHub\uAL\uAL\obj\Release\uAL.pdb

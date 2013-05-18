@@ -203,27 +203,6 @@ namespace uAL
                     Console.WriteLine();
                     Console.WriteLine("Added " + fileName + " with label " + label);
 
-                    // now we should rename the torrent file to a .loaded 
-                    bool renamed = false;
-                    int renumber = 2;
-                    string renameExtension = ".loaded";
-                    while (!renamed)
-                    {
-                        try
-                        {
-                            File.Move(fileName, fileName + renameExtension);
-                            Console.WriteLine("Renamed to {0}.", fileName + renameExtension);
-                            renamed = true;
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine("File already exists {0} incrementing number...", fileName + renameExtension);
-                            renameExtension = "_" + renumber.ToString() + ".loaded";
-                            renumber += 1;
-                            renamed = false;
-                        }
-                    }
-
                     return true;
                 }
             }
