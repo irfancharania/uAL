@@ -122,12 +122,13 @@ namespace uAL
                 string hash = (string)torrent[0];
                 string name = (string)torrent[2];
                 string label = (string)torrent[11];
+                string status = (string)torrent[21];
                 int percentage = Int32.Parse(torrent[4].ToString());
 
 
-                returnTorrents.Add(new Torrent { Hash = hash, Name = name, Label = label, PercentageDone = percentage });
+                returnTorrents.Add(new Torrent { Hash = hash, Name = name, Label = label, PercentageDone = percentage, Status = status });
                 if (forceUpdate)
-                    torrentCollection.Add(new Torrent { Hash = hash, Name = name, Label = label, PercentageDone = percentage });
+                    torrentCollection.Add(new Torrent { Hash = hash, Name = name, Label = label, PercentageDone = percentage, Status = status });
             }
 
             return returnTorrents;
@@ -157,7 +158,7 @@ namespace uAL
 
         public bool AddTorrent(string fileName, string label)
         {
-            if(timer != null)
+            if (timer != null)
                 timer.Start();
 
             //First, get excisting torrents from uTorrent, in case some have been added from outside this service...
@@ -213,15 +214,19 @@ namespace uAL
         {
             GetTorrents(true);
             List<string> toStop = new List<string>();
-            foreach(Torrent torrent in torrentCollection)
+            foreach (Torrent torrent in torrentCollection)
             {
-                if (torrent.PercentageDone == 1000 && torrent.Running)
-                    if (uAL.Program.Labels.Contains(torrent.Label))
-                    {
-                        Console.WriteLine(torrent.Name + " is done, and will be stopped");
-                        toStop.Add(torrent.Hash);
-                        torrent.Running = false;
-                    }
+                if ((torrent.PercentageDone == 1000 && torrent.Running) ||
+                    torrent.Status.Contains("Error: Files missing from job")
+                    )
+                {
+                    //if (uAL.Program.Labels.Contains(torrent.Label))
+                    //{
+                    Console.WriteLine(torrent.Name + " is done, and will be stopped");
+                    toStop.Add(torrent.Hash);
+                    torrent.Running = false;
+                    //}
+                }
             }
             if (toStop.Count > 0)
             {
@@ -237,6 +242,14 @@ namespace uAL
                 StreamReader sr = new StreamReader(response.GetResponseStream());
                 string torrentsResponse = sr.ReadToEnd();
                 response.Close();
+
+                HttpWebRequest removeTorrent = (HttpWebRequest)(HttpWebRequest.Create(host + "?action=remove&token=" + token + hashes));
+                removeTorrent.Credentials = credentials;
+                removeTorrent.Headers.Add("Cookie", cookie);
+                response = (HttpWebResponse)removeTorrent.GetResponse();
+                sr = new StreamReader(response.GetResponseStream());
+                torrentsResponse = sr.ReadToEnd();
+                response.Close();
             }
         }
     }
@@ -248,5 +261,6 @@ namespace uAL
         public string Label;
         public int PercentageDone;
         public bool Running = true;
+        public string Status;
     }
 }
